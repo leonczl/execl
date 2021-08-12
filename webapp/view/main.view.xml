@@ -1,0 +1,118 @@
+<mvc:View controllerName="zuploadExecl.controller.main" 
+	xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<l:VerticalLayout>
+						<u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/"
+						    tooltip="选择导入EXECL文件"
+							change="handleUploadchange"/>
+						<Button text="导入" press="handleUploadPress" />
+						<Button text="导出" press="handledownloaddPress"/>
+					</l:VerticalLayout>
+							<!--<class="sapFDynamicPageAlignContent"></class>-->
+				<Table id="idTaskTable" mode="SingleSelectMaster" fixedLayout="false" 
+				swipeDirection="Both" selectionChange="onSelect" growing="true"
+					items="{ path: 'fy>/data' }" width="auto">
+					<columns>
+				
+				
+						<Column >
+							<Text text="代码"/>
+						</Column>
+								<Column >
+							<Text text="名称"/>
+						</Column>
+								<Column hAlign="Center">
+					    	<Text text="类型"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="1月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="2月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="3月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="4月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="5月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="6月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="7月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="8月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="9月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="10月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="11月"/>
+						</Column>
+						<Column hAlign="Center">
+							<Text text="12月"/>
+						</Column>
+						<Column hAlign="End">
+							<Text text="计划总量"/>
+						</Column>
+						<Column hAlign="End">
+							<Text text="去年总量"/>
+						</Column>
+								<Column hAlign="End">
+							<Text text="备注"/>
+						</Column>
+						<Column hAlign="End">
+							<Text text="增减量"/>
+						</Column>
+					</columns >
+					<items >
+						<ColumnListItem id="__item0" selected="true">
+							<cells>
+								
+								<Text text="{fy>fybm}" id="fybm"/>
+								<Text text="{fy>fyms}" id="fyms"/>
+                                 <!--<Text text="{fy>fylx}" id="fylx"/>-->
+                               	<Button icon="sap-icon://flag"  visible="{= ${fy>fylx} ==='非归口' ? false:true}" />
+								<Text text="{path: 'fy>m1',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m1"/>
+								<Text text="{path:'fy>m2', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m2"/>
+								<Text text="{path: 'fy>m3',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m3"/>
+								<Text text="{path:'fy>m4', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m4"/>
+								<Text text="{path:'fy>m5', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m5"/>
+								<Text text="{path: 'fy>m6',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m6"/>
+								<Text text="{path:'fy>m7', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m7"/>
+								<Text text="{path:'fy>m8', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m8"/>
+								<Text text="{path: 'fy>m9',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m9"/>
+								<Text text="{path:'fy>m10', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m10"/>
+								<Text text="{path: 'fy>m11',type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m11"/>
+								<Text text="{path:'fy>m12', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="m12"/>
+								<Text text="{path:'fy>zfy', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="zfy"/>
+								<Text text="{path:'fy>snljfy', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 0 } }" id="snljfy"/>
+							  <Button icon="sap-icon://notes" visible="{= ${bz} ==='' ? false:true}" press="onPopoverNote"/>
+								<GenericTag visible="{=  ${fy>zfy} === ${fy>snljfy} ? false:true}"   text="" design="StatusIconHidden" status="{=  ${zfy}>${snljfy} ? 'Error':'Success'}" >
+									<ObjectNumber state= "{=  ${fy>zfy}>${fy>snljfy} ? 'Error':'Success'}" emphasized="false" number="{fy>zje}%" />
+								</GenericTag>
+								<!--<Text text="{path:'fy>snljfy', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2 } }" id="zjl"/>-->
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+	
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
