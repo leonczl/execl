@@ -13,6 +13,7 @@
 							change="handleUploadchange"/>
 						<Button text="导入" press="handleUploadPress" />
 						<Button text="导出" press="handledownloaddPress"/>
+						<Button text="打印" press="onprint"/>
 					</l:VerticalLayout>
 							<!--<class="sapFDynamicPageAlignContent"></class>-->
 				<Table id="idTaskTable" mode="SingleSelectMaster" fixedLayout="false" 
