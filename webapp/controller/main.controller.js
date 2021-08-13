@@ -13,8 +13,8 @@ sap.ui.define([
           result: {},
        //加载导入EXECL文件解析出JSON文件绑定JSONmodel中     
 		  handleUploadPress: function() {
-		      var b;
-		      console.log(b);
+	              var print ;
+	              console.log(print);
 			        if (this.result) {
                                  var JSONString = JSON.stringify(this.result);
                                  var JSONObject = JSON.parse(JSONString);
